@@ -22,13 +22,17 @@ public class FileProcessingServiceImpl implements FileProcessingService{
         if(existingFile!=null){
              throw  new ServiceException(ApplicationConstant.ERROR_STATUS_CODE, HttpStatus.OK,ApplicationConstant.FILE_ALREADY_EXIST);
         }
-        FileInfo fileInfo= repository.save(FileInfo.builder()
+        FileInfo fileInfo=FileInfo.builder()
                 .checksum(fileInfoDto.getChecksum())
                 .filename(fileInfoDto.getFilename())
-                .process(fileInfoDto.getProcess())
-                .status(fileInfoDto.getStatus()).build());
-
-        return new SuccessResponseDto(FileInfoDto.builder().checksum(fileInfo.getChecksum()).filename(fileInfo.getFilename()).process(fileInfo.getProcess()).Status(fileInfo.getStatus()).build()
+                .process(fileInfoDto.getProcess()).build();
+        setDefaultFileAttributes(fileInfo);
+        repository.save(fileInfo);
+        return new SuccessResponseDto(FileInfoDto.builder().checksum(fileInfo.getChecksum()).filename(fileInfo.getFilename()).process(fileInfo.getProcess()).build()
                 , ApplicationConstant.CREATED_MSG,ApplicationConstant.HTTP_RESPONSE_CREATED_CODE);
+    }
+
+    private void setDefaultFileAttributes(FileInfo fileInfo){
+        fileInfo.setStatus(ApplicationConstant.FILE_STATUS);
     }
 }

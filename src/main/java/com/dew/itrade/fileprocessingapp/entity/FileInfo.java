@@ -4,7 +4,7 @@ package com.dew.itrade.fileprocessingapp.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Builder
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -21,4 +21,11 @@ public class FileInfo extends  AuditEntiy {
     private String filename;
     private String process;
     private String status;
+
+    @Builder
+    public FileInfo(String checksum, String filename, String process) {
+        this.checksum = checksum;
+        this.filename = filename;
+        this.process = process;
+    }
 }

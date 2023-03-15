@@ -15,6 +15,4 @@ public class FileInfoDto {
 
     @NotEmpty(message = "process can not be empty")
     private String process;
-
-    private String Status;
 }
