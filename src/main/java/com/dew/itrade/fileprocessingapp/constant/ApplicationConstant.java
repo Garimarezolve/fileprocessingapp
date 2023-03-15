@@ -10,6 +10,6 @@ public class ApplicationConstant {
     public static final String SUCCESS = "Success";
     public static final String CREATED_MSG = "File record Created Successfully";
     public static final String FILE_ALREADY_EXIST = "File is already exist";
-    public static final String BAD_Request = "Bad Request";
+    public static final String BAD_REQUEST = "Bad Request";
     public static final String FILE_STATUS="active";
 }
