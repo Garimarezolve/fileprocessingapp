@@ -48,7 +48,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
             errors.put(fieldName, message);
         });
         Integer errorCode = ApplicationConstant.HTTP_BAD_REQUEST_CODE;
-        String errorMessage=ApplicationConstant.BAD_Request;
+        String errorMessage=ApplicationConstant.BAD_REQUEST;
         ErrorResponseDto errorResponseDto = new ErrorResponseDto(errorCode,errorMessage,errors);
         return new ResponseEntity<>(errorResponseDto, HttpStatus.BAD_REQUEST);
     }
